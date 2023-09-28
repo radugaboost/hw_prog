@@ -1,11 +1,12 @@
-import requests, pprint
+from requests import get
+from pprint import pprint
 from bs4 import BeautifulSoup
 from config import (
-    URL, HEADERS, CHART_LINE, AUTHOR, TRACK, HTTP_OK
+    YANDEX_URL, HEADERS, CHART_LINE, AUTHOR, TRACK, HTTP_OK
 )
 
 if __name__ == "__main__":
-    response = requests.get(URL, headers=HEADERS)
+    response = get(YANDEX_URL, headers=HEADERS)
 
     if response.status_code == HTTP_OK:
         chart = dict()
@@ -18,4 +19,4 @@ if __name__ == "__main__":
                 author: " ".join(track.strip().split())
             }
 
-        pprint.pprint(chart)
+    pprint(chart)
